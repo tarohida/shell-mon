@@ -1,0 +1,5 @@
+exit 0
+exit 1
+ping qiitadon.com -c 1 > /dev/null 2>&1
+curl https://qiita.com/ > /dev/null 2>&1
+mem=`ssh new.taro-hida.tk -C 'free' 2> /dev/null | grep Mem | awk '{print $3*100/$2}'`;echo 'Mem Use: '$mem' %';if [ `echo $mem | awk '{printf("%d", $1)}'` -le 60 ]; then exit 0; else exit 1; fi
